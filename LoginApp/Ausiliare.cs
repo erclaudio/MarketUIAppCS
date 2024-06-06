@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,5 +22,16 @@ namespace LoginApp
             frm.Show();
            
         }
-    }
+
+        public static void DataGridViewStyle(DataGridView grid) {
+            grid.ColumnHeadersDefaultCellStyle.BackColor = Color.DarkTurquoise;
+            grid.ColumnHeadersDefaultCellStyle.ForeColor = Color.Blue;
+            grid.EnableHeadersVisualStyles = false;
+
+            foreach (DataGridViewColumn column in grid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.NotSortable; 
+            }
+        }
+}
 }

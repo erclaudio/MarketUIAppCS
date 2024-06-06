@@ -15,6 +15,7 @@ namespace LoginApp
         public profiliFrm()
         {
             InitializeComponent();
+            Ausiliare.DataGridViewStyle(this.dataGridView1);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -24,7 +25,23 @@ namespace LoginApp
 
         private void profiliFrm_Load(object sender, EventArgs e)
         {
+            var result = DBoperations.GetListaProfili();
+            if(string.IsNullOrEmpty(result.Info))
+            {
+                if (result.ListaProfili.Count > 0)
+                {
+                    dataGridView1.Rows.Clear();
+                    foreach (var row in result)
+                    {
+                        dataGridView1.Rows.Add(row.id, row.Tipo, row.Descrzione);
+                    }
+                    dataGridView1.ClearSelection();
+                }
+            }
+            else
+            {
 
+            }
         }
     }
 }
