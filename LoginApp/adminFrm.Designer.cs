@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(adminFrm));
             this.flpButton = new System.Windows.Forms.FlowLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlForm = new System.Windows.Forms.Panel();
             this.profiliBtn = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.adminPnl = new System.Windows.Forms.Panel();
             this.flpButton.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,17 +61,6 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1214, 5);
             this.label1.TabIndex = 1;
-            // 
-            // pnlForm
-            // 
-            this.pnlForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlForm.Location = new System.Drawing.Point(15, 93);
-            this.pnlForm.Name = "pnlForm";
-            this.pnlForm.Size = new System.Drawing.Size(200, 100);
-            this.pnlForm.TabIndex = 2;
-            this.pnlForm.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlForm_Paint);
             // 
             // profiliBtn
             // 
@@ -124,13 +113,22 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // adminPnl
+            // 
+            this.adminPnl.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.adminPnl.Location = new System.Drawing.Point(15, 93);
+            this.adminPnl.Name = "adminPnl";
+            this.adminPnl.Size = new System.Drawing.Size(1211, 585);
+            this.adminPnl.TabIndex = 2;
+            this.adminPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.adminPnl_Paint);
+            // 
             // adminFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1238, 701);
-            this.Controls.Add(this.pnlForm);
+            this.Controls.Add(this.adminPnl);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flpButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -150,6 +148,6 @@
         private System.Windows.Forms.Button profiliBtn;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Panel pnlForm;
+        private System.Windows.Forms.Panel adminPnl;
     }
 }
