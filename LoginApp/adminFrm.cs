@@ -39,20 +39,28 @@ namespace LoginApp
         }
         private void ManageStyleButton()
         { 
-            foreach (Control control in flpButton.Controls.OfType<Button>()) 
+            foreach (Control control1 in flpButton.Controls.OfType<Button>()) 
             { 
-                var obj = (Button) control;
-                obj.Click += delegate
-
+                var obj1 = (Button) control1;
+                
+                obj1.Click += delegate
                 {
-                    foreach (Control control1 in flpButton.Controls.OfType<Button>())
-                    { 
-                        
+                    foreach (Control control2 in flpButton.Controls.OfType<Button>())
+                    {
+                        var obj2 = (Button)control2;
+
+                        obj2.BackColor = Color.White;
+                        obj2.ForeColor = Color.LightBlue;
                     }
-                    obj.BackColor = Color.LightBlue;
-                    obj.ForeColor = Color.White;
+                    obj1.BackColor = Color.LightBlue;
+                    obj1.ForeColor = Color.White;
                 };
             }
+        }
+
+        private void pnlForm_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

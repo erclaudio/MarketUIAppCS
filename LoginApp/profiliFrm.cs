@@ -16,5 +16,15 @@ namespace LoginApp
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void profiliFrm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

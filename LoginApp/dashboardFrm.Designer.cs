@@ -131,6 +131,7 @@
             this.formPnl.Name = "formPnl";
             this.formPnl.Size = new System.Drawing.Size(940, 511);
             this.formPnl.TabIndex = 4;
+            this.formPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.formPnl_Paint);
             // 
             // button6
             // 
@@ -261,6 +262,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "dashboardFrm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.dashboardFrm_Load);
             this.SizeChanged += new System.EventHandler(this.dashboardFrm_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.topPnl.ResumeLayout(false);

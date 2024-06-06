@@ -42,5 +42,10 @@ namespace LoginApp
         {
 
         }
+
+        private void loginFrm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

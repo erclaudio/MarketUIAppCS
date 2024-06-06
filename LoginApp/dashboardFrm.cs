@@ -51,7 +51,17 @@ namespace LoginApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Ausiliare.loadForm(new adminFrm(), formPnl);;
+            Ausiliare.loadForm(new adminFrm(), formPnl);
+        }
+
+        private void formPnl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dashboardFrm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
