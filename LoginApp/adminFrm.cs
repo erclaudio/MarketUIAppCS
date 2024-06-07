@@ -30,7 +30,7 @@ namespace LoginApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
+            Ausiliare.loadForm(new User(), adminPnl);
         }
 
         private void adminFrm_Load(object sender, EventArgs e)

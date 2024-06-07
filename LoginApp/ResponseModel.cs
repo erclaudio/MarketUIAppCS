@@ -13,5 +13,10 @@ namespace LoginApp
             public List<Modelli.Profilo>  ListaProfili { get; set; }
             public string Info { get; set; }
         }
+        public class Response_Utenti
+        {
+            public List<Modelli.Utente> ListaUtenti { get; set; }
+            public string Info { get; set; }
+        }
     }
 }

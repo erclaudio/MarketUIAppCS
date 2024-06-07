@@ -31,7 +31,7 @@ namespace LoginApp
                 if (result.ListaProfili.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
-                    foreach (var row in result)
+                    foreach (var row in result.ListaProfili)
                     {
                         dataGridView1.Rows.Add(row.id, row.Tipo, row.Descrzione);
                     }
@@ -40,8 +40,18 @@ namespace LoginApp
             }
             else
             {
-
+                MessageBox.Show(result.Info, "Lettura Profili", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grbSearch_SizeChanged(object sender, EventArgs e)
+        {
+            grbSearch.Location = new Point((this.Width - grbSearch.Width) / 2, grbSearch.Location.Y);
         }
     }
 }
