@@ -28,25 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.ManageProfileLbl = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txbType = new System.Windows.Forms.TextBox();
             this.txbDesc = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.manageProfileBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // ManageProfileLbl
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Create Profile";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.ManageProfileLbl.AutoSize = true;
+            this.ManageProfileLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ManageProfileLbl.Location = new System.Drawing.Point(12, 9);
+            this.ManageProfileLbl.Name = "ManageProfileLbl";
+            this.ManageProfileLbl.Size = new System.Drawing.Size(102, 16);
+            this.ManageProfileLbl.TabIndex = 0;
+            this.ManageProfileLbl.Text = "Create Profile";
+            this.ManageProfileLbl.Click += new System.EventHandler(this.label1_Click);
             // 
             // button1
             // 
@@ -102,17 +102,19 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Description";
             // 
-            // button2
+            // manageProfileBtn
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(162, 178);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 36);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "Create";
-            this.button2.UseVisualStyleBackColor = false;
+            this.manageProfileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.manageProfileBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.manageProfileBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.manageProfileBtn.ForeColor = System.Drawing.Color.White;
+            this.manageProfileBtn.Location = new System.Drawing.Point(162, 178);
+            this.manageProfileBtn.Name = "manageProfileBtn";
+            this.manageProfileBtn.Size = new System.Drawing.Size(159, 36);
+            this.manageProfileBtn.TabIndex = 6;
+            this.manageProfileBtn.Text = "Create";
+            this.manageProfileBtn.UseVisualStyleBackColor = false;
+            this.manageProfileBtn.Click += new System.EventHandler(this.button2_Click);
             // 
             // manageProfileFrm
             // 
@@ -120,17 +122,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(486, 226);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.manageProfileBtn);
             this.Controls.Add(this.txbDesc);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txbType);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.ManageProfileLbl);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "manageProfileFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "manageProfileFrm";
+            this.Load += new System.EventHandler(this.manageProfileFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,12 +141,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label ManageProfileLbl;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txbType;
         private System.Windows.Forms.TextBox txbDesc;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button manageProfileBtn;
     }
 }

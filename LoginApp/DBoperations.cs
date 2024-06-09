@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using System.Windows.Forms;
 using Microsoft.SqlServer.Server;
 using System.Globalization;
+using System.Reflection;
 
 namespace LoginApp
 {
@@ -43,37 +44,64 @@ namespace LoginApp
             return responseProfili;
         }
 
-        public static ResponseModel.Response_Profili CreateProfile(Modelli.Profilo profilo)
-        {
-            ResponseModel.Response_Profili responseProfili = new ResponseModel.Response_Profili();
-
+        public static void CreateProfile(Modelli.Profilo profilo, out string info)
+        {            
+            info = string.Empty ;
             try
             {
                 if (File.Exists(pathProfili))
                 {
                     string infoListaProfili = File.ReadAllText(pathProfili);
-                    var letturaFile = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);
-                    letturaFile.Add(profilo);
+                    var letturaFile = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);                    
 
-                    using (StreamWriter sw = new StreamWriter(pathProfili, false))
+                    var exists = letturaFile.Exists(lf => lf.Tipo.ToLower() == profilo.Tipo.ToLower());
+                    if (exists)
                     {
-                        sw.WriteLine(JsonConvert.SerializeObject(letturaFile)); sw.Close();
+                        info = $"Profile Already Exists of Type{profilo.Tipo} ";
                     }
+                    else
+                    {
+                        letturaFile.Add(profilo);
+                        using (StreamWriter sw = new StreamWriter(pathProfili, false))
+                        {
+                            sw.WriteLine(JsonConvert.SerializeObject(letturaFile));
+                            sw.Close();
+                        }
+                    }                  
+                    
                 }
+                
                 else
                 {
                     File.Create(pathProfili).Close();
-                }
-
+                    List<Modelli.Profilo> listaProfili = new List<Modelli.Profilo>();
+                    listaProfili.Add(profilo);
+                    using (StreamWriter sw = new StreamWriter(pathProfili, false))
+                    {
+                        sw.WriteLine(JsonConvert.SerializeObject(listaProfili));
+                        sw.Close();
+                    }                    
+                }                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
-            }
-            return responseProfili;
+               info = $"Errore: {ex.Message}\n {ex.StackTrace}";
+                
+            }            
         }
+
+        public static int GetIdProfili()
+        {
+            int Id = 0;
+            if (File.Exists(pathProfili))
+            {
+                string infoListaProfili = File.ReadAllText(pathProfili);
+                List<Modelli.Profilo> lista = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);
+                Id = lista.Max(l => l.ID + 1);
             }
+            return Id + 1;
+        }
+
         #endregion
         //#region Utenti       
         //public static ResponseModel.Response_Utenti GetListaUtenti()

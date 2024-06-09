@@ -10,7 +10,7 @@ namespace LoginApp
     {
         public class Profilo
         {
-            public int id { get; set; }
+            public int ID { get; set; }
             public string Tipo { get; set; }
             public string Descrzione { get; set; }
         }

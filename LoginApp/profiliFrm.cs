@@ -25,15 +25,20 @@ namespace LoginApp
 
         private void profiliFrm_Load(object sender, EventArgs e)
         {
+            ReadData();
+           
+        }
+        public void ReadData()
+        {
             var result = DBoperations.GetListaProfili();
-            if(string.IsNullOrEmpty(result.Info))
+            if (string.IsNullOrEmpty(result.Info))
             {
                 if (result.ListaProfili.Count > 0)
                 {
                     dataGridView1.Rows.Clear();
                     foreach (var row in result.ListaProfili)
                     {
-                        dataGridView1.Rows.Add(row.id, row.Tipo, row.Descrzione);
+                        dataGridView1.Rows.Add(row.ID, row.Tipo, row.Descrzione);
                     }
                     dataGridView1.ClearSelection();
                 }
@@ -46,7 +51,7 @@ namespace LoginApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            new manageProfileFrm().Show();
+            new manageProfileFrm(this, 1,string.Empty,string.Empty,0).ShowDialog();
         }
 
         private void grbSearch_SizeChanged(object sender, EventArgs e)
