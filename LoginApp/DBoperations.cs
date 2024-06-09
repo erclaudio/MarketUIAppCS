@@ -21,34 +21,6 @@ namespace LoginApp
             ResponseModel.Response_Profili responseProfili = new ResponseModel.Response_Profili();
             try
             {
-                if(File.Exists(pathProfili))
-                {
-                    string infoListaProfili = File.ReadAllText(pathProfili);
-                    responseProfili.ListaProfili = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);
-                    responseProfili.Info = string.Empty;                    
-                    
-                }
-                else
-                {
-                    responseProfili.ListaProfili = null;
-                    responseProfili.Info = "Non Esiste nessun profilo ...";
-                }
-            }
-            catch (Exception e)
-            {
-                //MessageBox.Show(string.Format("Attenzione: {0}\n{1}",e.Message, e.StackTrace), "Errore di lettura", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                responseProfili.ListaProfili = new List<Modelli.Profilo>();
-                responseProfili.Info = e.Message + "\n" + e.StackTrace;
-            }
-            return responseProfili;
-        }
-        #endregion
-        #region Utenti
-        public static ResponseModel.Response_Utenti GetListaUtenti()
-        {
-            ResponseModel.Response_Profili responseProfili = new ResponseModel.Response_Profili();
-            try
-            {
                 if (File.Exists(pathProfili))
                 {
                     string infoListaProfili = File.ReadAllText(pathProfili);
@@ -69,7 +41,68 @@ namespace LoginApp
                 responseProfili.Info = e.Message + "\n" + e.StackTrace;
             }
             return responseProfili;
-
-            #endregion
         }
+
+        public static ResponseModel.Response_Profili CreateProfile(Modelli.Profilo profilo)
+        {
+            ResponseModel.Response_Profili responseProfili = new ResponseModel.Response_Profili();
+
+            try
+            {
+                if (File.Exists(pathProfili))
+                {
+                    string infoListaProfili = File.ReadAllText(pathProfili);
+                    var letturaFile = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);
+                    letturaFile.Add(profilo);
+
+                    using (StreamWriter sw = new StreamWriter(pathProfili, false))
+                    {
+                        sw.WriteLine(JsonConvert.SerializeObject(letturaFile)); sw.Close();
+                    }
+                }
+                else
+                {
+                    File.Create(pathProfili).Close();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return responseProfili;
+        }
+            }
+        #endregion
+        //#region Utenti       
+        //public static ResponseModel.Response_Utenti GetListaUtenti()
+        //{
+        //    ResponseModel.Response_Profili responseProfili = new ResponseModel.Response_Profili();
+        //    try
+        //    {
+        //        if (File.Exists(pathProfili))
+        //        {
+        //            string infoListaProfili = File.ReadAllText(pathProfili);
+        //            responseProfili.ListaProfili = JsonConvert.DeserializeObject<List<Modelli.Profilo>>(infoListaProfili);
+        //            responseProfili.Info = string.Empty;
+
+        //        }
+        //        else
+        //        {
+        //            responseProfili.ListaProfili = null;
+        //            responseProfili.Info = "Non Esiste nessun profilo ...";
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        //MessageBox.Show(string.Format("Attenzione: {0}\n{1}",e.Message, e.StackTrace), "Errore di lettura", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        //        responseProfili.ListaProfili = new List<Modelli.Profilo>();
+        //        responseProfili.Info = e.Message + "\n" + e.StackTrace;
+        //    }
+        //    return responseProfili;
+
+        //}
+        //#endregion
+    }
 }

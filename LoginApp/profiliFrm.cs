@@ -46,12 +46,22 @@ namespace LoginApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            new manageProfileFrm().Show();
         }
 
         private void grbSearch_SizeChanged(object sender, EventArgs e)
         {
             grbSearch.Location = new Point((this.Width - grbSearch.Width) / 2, grbSearch.Location.Y);
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
